@@ -1,9 +1,8 @@
-use clap::{Arg, App};
+use clap::{App, Arg};
 
 fn main() {
-    
-let app = App::new("rustask")
-    .version("1.0");
+    let app = App::new("clitask").version("0.1.0");
+
     // Define the name command line option
     let title = Arg::with_name("title")
         .long("title") // allow --name
@@ -27,12 +26,13 @@ let app = App::new("rustask")
     let matches = app.get_matches();
 
     // Extract the actual name
-    let title_name = matches.value_of("title")
+    let title_name = matches
+        .value_of("title")
         .expect("This can't be None, we said it was required");
-    
-    let component_name = matches.value_of("component")
+
+    let component_name = matches
+        .value_of("component")
         .expect("This can't be None, we said it was required");
 
     println!("title: {}. component: {}", title_name, component_name);
-
 }
